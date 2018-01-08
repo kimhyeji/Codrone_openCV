@@ -285,14 +285,10 @@ class FlappyBird:
                     # Set the update times for each of the following the bigger the time
                     # the less frequent the data will updated
                     self.batteryTimer = timeCounter(timePassed, self.batteryTimer, 1)
-                    #self.irRangeTimer = timeCounter(timePassed, self.irRangeTimer, 4)
                     if (self.drone.isConnected() and self.batteryTimer == 0):
                         self.drone.sendRequest(DataType.Battery)
                         sleep(0.03)
-                    elif (self.drone.isConnected() and self.irRangeTimer == 0):
-                        self.drone.sendRequest(DataType.Range)
-                        sleep(0.03)
-
+                   
                     # We could check battery problem
                     if(self.battery != 0 and self.battery < 10): print(self.battery)
                     # ------------------------------------------------------------------------------------
